@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence
+	xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+    version="2.0">
+    
+    <!-- NOME DA UNIDADE DE PERSISTÊNCIA -->
+    <!-- [JTA|RESOURCE_LOCAL] -->
+	<persistence-unit name="controlePU" transaction-type="JTA">
+		<!-- provedor/implementacao do JPA -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<!-- NOME DA JNDI, NOME DO DATASOUCE -->
+		<jta-data-source>java:jboss/datasources/controle</jta-data-source>
+		
+		<!-- MAPEAMENTO DAS CLASSES -->
+		<class>br.eti.gadelha.ejb.controle.modelo.oque.quem.Pessoa"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.oque.quem.PessoaFisica"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.oque.quem.Usuario"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.oque.Ferramenta"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.oque.Recurso"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.oque.Cargo"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.oque.Grupo"</class>
+		
+		<class>br.eti.gadelha.ejb.controle.modelo.como.Funcao"</class>
+		
+		<class>br.eti.gadelha.ejb.controle.modelo.paraQue.Historia"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.paraQue.Planejado"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.paraQue.Programa"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.paraQue.Projeto"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.paraQue.Requisito"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.paraQue.Sujerido"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.paraQue.Tarefa"</class>
+		
+		<class>br.eti.gadelha.ejb.controle.modelo.quando.Iteracao"</class>
+		<class>br.eti.gadelha.ejb.controle.modelo.quando.Release"</class>
+		
+		<properties>
+			<!-- DADOS DA CONEXÃO -->
+			<!-- DRIVER -->
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+				<!-- com.mysql.jdbc.Driver --><!-- MySQL -->
+				<!--com.ibm.db2.jcc.DB2Driver --><!-- IBM DB2 -->
+				<!-- com.microsoft.sqlserver.jdbc.SQLServerDriver --><!-- SQLServer -->
+				<!-- sun.jdbc.odbc.JdbcOdbcDriver --><!-- ODBC -->
+				<!-- sun.jdbc.odbc.JdbcOdbcDriver --><!-- MS Access -->
+				<!-- org.postgresql.Driver --><!-- PostgreSQL -->
+			
+			<!-- URL DA CONEXÃO -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.0.0.1:5432/controle" />
+			<!-- USUÁRIO -->
+			<property name="javax.persistence.jdbc.user" value="postgres" />
+			<!-- SENHA -->
+			<property name="javax.persistence.jdbc.password" value="G@delha" />
+		
+			<!-- PROPRIEDADES DO HIBERNATE -->
+			<!-- DIALETO DO BANCO -->
+			<property name="hibernate.dialect" value = "org.hibernate.dialect.PostgreSQLDialect" />
+				<!-- org.hibernate.dialect.DB2Dialect --><!-- DB2 -->
+				<!-- org.hibernate.dialect.HSQLDialect --><!-- HipersonicSQL -->
+				<!-- org.hibernate.dialect.InformixDialect --><!-- Informix -->
+				<!-- org.hibernate.dialect.IngresDialect --><!-- Ingres -->
+				<!-- org.hibernate.dialect.InterbaseDialect --><!-- Interbase -->
+				<!-- org.hibernate.dialect.PointbaseDialect --><!-- Pointbase -->
+				<!-- org.hibernate.dialect.PostgreSQLDialect --><!-- PostgreSQL -->
+				<!-- org.hibernate.dialect.MckoiDialect --><!-- Mckoi SQL -->
+				<!-- org.hibernate.dialect.SQLServerDialect --><!-- Microsoft SQL Server -->
+				<!-- org.hibernate.dialect.MySQLDialect --><!-- MySQL -->
+				<!-- org.hibernate.dialect.OracleDialect --><!-- Oracle -->
+				<!-- org.hibernate.dialect.Oracle9Dialect --><!-- Oracle 9 -->
+				<!-- org.hibernate.dialect.ProgressDialect --><!-- Progress -->
+				<!-- org.hibernate.dialect.FrontbaseDialect --><!-- FrontBase -->
+				<!-- org.hibernate.dialect.SAPDBDialect --><!-- SAP DB -->
+				<!-- org.hibernate.dialect.SybaseDialect --><!-- Sybase -->
+				<!-- org.hibernate.dialect.SybaseAnywhereDialect --><!-- Sybase Anywhere -->
+			
+			<!-- EXIBIÇÃO DE SQL GERADOS -->
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.jdbc.batch_size" value="20" />
+			
+			<property name="hibernate.connection.charSet" value="UTF-8"/>
+			<property name="hibernate.current_session_context_class" value="thread" />
+			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+			<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup"/>
+			<!-- CONFIGURANDO O CACHE LEVEL 2 -->
+			<property name="hibernate.cache.use_second_level_cache" value="true"/>
+			
+			<!-- CONFIGURANDO O POOL DE CONEXÕES VIA c3p0 -->
+			<property name="c3p0.min_size" value="5" />
+			<property name="c3p0.max_size" value="20" />
+			<property name="c3p0.timeout" value="1800" />
+			<property name="c3p0.max_statements" value="50" />
+			<property name="c3p0.acquire_increment" value="1" />
+			<property name="c3p0.idle_test_period" value="100" />
+			
+			<property name="eclipselink.logging.level" value="fine"/>
+			<!--  atualiza o banco, gera as tabelas se for preciso -->
+			<!-- <property name="eclipselink.ddl-generation" value="update"/> -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+				<!-- validate | update | create | create-drop -->
+		</properties>
+	</persistence-unit>
+</persistence>
