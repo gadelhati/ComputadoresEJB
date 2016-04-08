@@ -11,6 +11,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @autor Marcelo Ribeiro Gadelha
@@ -18,8 +19,9 @@ import javax.persistence.TemporalType;
  * @see www.gadelha.eti.br
  **/
 
-//@XmlRootElement
+@XmlRootElement(name="pessoa")
 //@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlElementWrapper
 @Entity
 @Table(name="pessoa")
 @Inheritance(strategy=InheritanceType.JOINED)

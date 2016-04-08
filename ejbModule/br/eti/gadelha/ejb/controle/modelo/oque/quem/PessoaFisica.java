@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import br.eti.gadelha.ejb.controle.modelo.oque.Recurso;
 
@@ -17,6 +18,9 @@ import br.eti.gadelha.ejb.controle.modelo.oque.Recurso;
  * @see www.gadelha.eti.br
  **/
 
+@XmlRootElement(name="pessoafisica")
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlElementWrapper
 @Entity
 @Table(name="pessoaFisica")
 @PrimaryKeyJoinColumn(name = "id")
